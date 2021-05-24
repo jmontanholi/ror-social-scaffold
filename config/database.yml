@@ -22,9 +22,14 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: ror_social_scaffold_development
-
+  adapter: postgresql
+  database: development
+  username: joao montanholi
+  password: <%= ENV['MY_PASSWORD'] %>
+  host: localhost
+  encoding: UTF8
+  pool: 5
+  timeout: 5000
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
