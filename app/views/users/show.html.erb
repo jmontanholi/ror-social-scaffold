@@ -1,5 +1,8 @@
 <section class="user-section">
   <h2><%= "Name: #{@user.name}" %></h2>
+  <% if user_signed_in? && current_user.friendships.find_by(friend_id:@user.id) %>
+    HERE WE WILL HAVE THE LINK TO THE FRIENDSHIP REQUEST
+  <% end %>
   <article class="timeline">
     <h3>Recent posts:</h3>
     <ul class="posts">
