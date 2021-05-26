@@ -12,29 +12,28 @@ class UsersController < ApplicationController
 
   def add_friend
     @friend = current_user.friendships.build(friend_id: params[:friend_id], status: 'pending')
-   
-    if @friend.save
-      respond_to do |format|
-        format.html { redirect_to users_url, notice: 'Friend request sent' }  
-      end
+
+    @friend.save
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'Friend request sent' }
     end
   end
 
-  def accept_friendship 
+  def accept_friendship
     @friendship = current_user.inverse_friendships.find(params[:id])
-    @friendship.status = "Accepted"
+    @friendship.status = 'Accepted'
     @friendship.save
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'Friend request accepted' }  
+      format.html { redirect_to users_url, notice: 'Friend request accepted' }
     end
   end
 
   def refuse_friendship
     @friendship = current_user.inverse_friendships.find(params[:id])
-    @friendship.status = "Refused"
+    @friendship.status = 'Refused'
     @friendship.save
     respond_to do |format|
-      format.html { redirect_to users_url, alert: 'Friend request refused' }  
+      format.html { redirect_to users_url, alert: 'Friend request refused' }
     end
   end
 end
