@@ -10,5 +10,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
   end
   post '/add_friend', to: 'users#add_friend', as: 'add_friend'
+  post '/accept_friendship', to: 'users#accept_friendship', as: 'accept_friendship'
+  post '/refuse_friendship', to: 'users#refuse_friendship', as: 'refuse_friendship'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

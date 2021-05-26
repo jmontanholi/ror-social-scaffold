@@ -19,4 +19,22 @@ class UsersController < ApplicationController
       end
     end
   end
+
+  def accept_friendship 
+    @friendship = current_user.inverse_friendships.find(params[:id])
+    @friendship.status = "Accepted"
+    @friendship.save
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: 'Friend request accepted' }  
+    end
+  end
+
+  def refuse_friendship
+    @friendship = current_user.inverse_friendships.find(params[:id])
+    @friendship.status = "Refused"
+    @friendship.save
+    respond_to do |format|
+      format.html { redirect_to users_url, alert: 'Friend request refused' }  
+    end
+  end
 end
