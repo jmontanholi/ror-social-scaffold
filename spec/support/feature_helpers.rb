@@ -2,7 +2,7 @@ module FeatureHelpers
   def log_in(user)
     visit '/users/sign_in'
     within("#new_user") do
-      fill_in 'user_email', with: 'ariel@gmail.com'
+      fill_in 'user_email', with: user.email
       fill_in 'user_password', with: '123123'
     end
     click_button 'Log in'

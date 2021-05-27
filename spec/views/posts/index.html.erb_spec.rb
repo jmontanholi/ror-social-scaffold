@@ -1,6 +1,6 @@
 require 'rails_helper'
 require 'support/feature_helpers'
-RSpec.describe 'Stay in touch', type: :describe do
+RSpec.describe 'Posts', type: :describe do
   let (:user) { User.create(name: 'Ariel', email: 'ariel@gmail.com', password: '123123', password_confirmation: '123123') }
 
   feature 'index page' do
