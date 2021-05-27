@@ -1,16 +1,22 @@
-# Scaffold for social media app with Ruby on Rails
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
-> This repo includes intial code for social media app with basic styling. Its purpose is to be a starting point for Microverse students.
+# Social Media
+
+> In this project me and my partner added friendship features and tests to a initiated social media
 
 ## Built With
 
 - Ruby v2.7.0
 - Ruby on Rails v5.2.4
+- Rspec
+- Capybara
+- VScode
+- Git
+- Github
 
 ## Live Demo
 
 TBA
-
 
 ## Getting Started
 
@@ -29,6 +35,16 @@ Instal gems with:
 ```
 bundle install
 ```
+
+Get your enviroment variables ready:
+
+- Create a file inside your root path with the name of `.env` and add the following:
+
+```
+MY_PASSWORD=your_database_password
+MY_NAME=your_database_username
+```
+
 
 Setup database with:
 
@@ -60,24 +76,26 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```
-    rpsec --format documentation
+    bundle exec rspec --format documentation
 ```
-
-> Tests will be added by Microverse students. There are no tests for initial features in order to make sure that students write all tests from scratch.
-
-### Deployment
-
-TBA
 
 ## Authors
 
-TBA
+👤 **João Vítor Montanholi Nunes** 
+
+- GitHub: [jmontanholi](https://github.com/jmontanholi) 
+- Twitter: [MontanholiNunes](https://twitter.com/MontanholiNunes) 
+- LinkedIn: [Joao vitor montanholi](https://www.linkedin.com/in/joaovitormontanholi/) 
+
+👤 **Arthur Borges**
+
+- GitHub: [@arthurborgesdev](https://github.com/arthurborgesdev)
+- Twitter: [@arthurmoises](https://twitter.com/arthurmoises)
+- LinkedIn: [Arthur Borges](https://linkedin.com/in/arthurmoises)
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
-
-Feel free to check the [issues page](issues/).
+Contributions and feature requests are welcome!
 
 ## Show your support
 
@@ -85,7 +103,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-TBA
+- [Microverse original project](https://github.com/arthurborgesdev/private-events/edit/development/README.md)
 
 ## 📝 License
 
