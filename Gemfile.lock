@@ -70,6 +70,10 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
+    database_cleaner-active_record (2.0.1)
+      activerecord (>= 5.a)
+      database_cleaner-core (~> 2.0.0)
+    database_cleaner-core (2.0.1)
     devise (4.7.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -130,6 +134,9 @@ GEM
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
+    rack_session_access (0.2.0)
+      builder (>= 2.0.0)
+      rack (>= 1.0.0)
     rails (5.2.4.1)
       actioncable (= 5.2.4.1)
       actionmailer (= 5.2.4.1)
@@ -256,6 +263,7 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.2)
+  database_cleaner-active_record
   devise
   dotenv-rails
   jbuilder (~> 2.5)
@@ -263,6 +271,7 @@ DEPENDENCIES
   nokogiri (~> 1.11)
   pg (>= 0.18, < 2.0)
   puma (~> 3.12)
+  rack_session_access
   rails (~> 5.2.4)
   rspec-rails
   rubocop
