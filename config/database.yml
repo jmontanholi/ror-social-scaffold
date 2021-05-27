@@ -63,7 +63,7 @@ development:
 test:
   <<: *default
   adapter: postgresql
-  database: development
+  database: test
   username: <%= ENV['MY_NAME'] %>
   password: <%= ENV['MY_PASSWORD'] %>
   host: localhost
