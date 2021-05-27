@@ -15,4 +15,12 @@ module FeatureHelpers
     end
     click_button 'Save'
   end
+
+  def create_comment
+    visit '/posts'
+    within("#new_comment") do
+      fill_in 'comment_content', with: 'This is a comment'
+    end
+    click_button 'Comment'
+  end
 end
