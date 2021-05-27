@@ -1,33 +1,36 @@
 require 'rails_helper'
-
-RSpec.describe 'Stay in touch', type: :feature do
+require 'support/feature_helpers'
+RSpec.describe 'Stay in touch', type: :describe do
   let (:user) { User.create(name: 'Ariel', email: 'ariel@gmail.com', password: '123123', password_confirmation: '123123') }
-  let (:post) { user.posts.create(content: "Writing a capybara test") }
 
-  describe 'index page' do
-    background do
-      logged_as user
-    end  
-    it 'show the right content (Brand name)' do
-      visit posts_path
-      sleep(5)
-      expect(page).to have_content('STAY IN TOUCH')
+  feature 'index page' do
+    
+    scenario 'Signing in with correct credentials' do
+      log_in(user)
+      expect(page).to have_content 'successfully'
     end
 
-    it 'create the post in page' do
-      #page.set_rack_session(user_id: user.id)
-      visit posts_path
-      sleep(5)
-      fill_in "Content", with: "Writing a capybara test"
-      click_button "Save"
-      expect(page).to have_content("Success")
+    scenario 'Create the post in page' do
+      log_in(user)
+      visit '/posts'
+      create_post
+      expect(page).to have_content 'successfully'
     end
 
-    it 'show the list of posts' do
-      #page.set_rack_session(user_id: user.id)
-      visit posts_path
+    scenario 'Shows the list of posts' do
+      log_in(user)
+      create_post
+      create_post
+      # visit posts_path
       sleep(5)
-      expect(page).to have_content("Writing a capybara test")
-    end   
+      expect(page).to have_content('Please work capybara')
+    end
+
+    scenario 'When you click like it likes the post' do
+      log_in(user)
+      create_post
+      click_link 'Like!'
+      expect(page).to have_content 'You liked a post.'
+    end
   end
 end
