@@ -1,15 +1,24 @@
 require 'rails_helper'
 require 'support/feature_helpers'
 RSpec.describe 'Posts', type: :describe do
-  let (:user) { User.create(name: 'Ariel', email: 'ariel@gmail.com', password: '123123', password_confirmation: '123123') }
+  let(:user) do
+    User.create(name: 'Ariel', email: 'ariel@gmail.com', password: '123123', password_confirmation: '123123')
+  end
 
-  feature 'index page' do
-    
+  feature 'Sign in' do
     scenario 'Signing in with correct credentials' do
       log_in(user)
       expect(page).to have_content 'successfully'
     end
 
+    scenario 'When you click sign out your session is ended' do
+      log_in(user)
+      click_link 'Sign out'
+      expect(page).to have_content 'Sign in'
+    end
+  end
+
+  feature 'Posts' do
     scenario 'Create the post in page' do
       log_in(user)
       visit '/posts'
@@ -24,7 +33,9 @@ RSpec.describe 'Posts', type: :describe do
       sleep(5)
       expect(page).to have_content('Please work capybara')
     end
+  end
 
+  feature 'Likes' do
     scenario 'When you click like it likes the post' do
       log_in(user)
       create_post
@@ -39,24 +50,20 @@ RSpec.describe 'Posts', type: :describe do
       click_link 'Dislike!'
       expect(page).to have_content 'You disliked a post.'
     end
+  end
 
+  feature 'Comment and Navigation' do
     scenario 'When you write a comment and click comment you create it' do
       log_in(user)
       create_post
       create_comment
       expect(page).to have_content 'This is a comment'
-    end 
+    end
 
     scenario 'When you click ALL USERS you go to users#index' do
       log_in(user)
       click_link 'All users'
       expect(page).to have_content 'Name'
-    end
-
-    scenario 'When you click sign out your session is ended' do
-      log_in(user)
-      click_link 'Sign out'
-      expect(page).to have_content 'Sign in'
     end
   end
 end

@@ -50,10 +50,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails'
-  gem 'selenium-webdriver'
-  gem 'webdrivers'
-  gem 'database_cleaner-active_record' 
+  gem 'database_cleaner-active_record'
   gem 'rack_session_access'
 end
 
