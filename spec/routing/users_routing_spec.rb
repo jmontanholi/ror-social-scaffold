@@ -11,15 +11,15 @@ RSpec.describe UsersController, type: :routing do
     end
 
     it 'routes to #add_friend' do
-      expect(post: '/add_friend').to route_to('users#add_friend')
+      expect(post: '/users/add_friend').to route_to('users#add_friend')
     end
 
     it 'routes to #accept_friendship' do
-      expect(post: '/accept_friendship').to route_to('users#accept_friendship')
+      expect(post: '/users/accept_friendship').to route_to('users#accept_friendship')
     end
 
     it 'routes to #refuse_friendship' do
-      expect(post: '/refuse_friendship').to route_to('users#refuse_friendship')
+      expect(post: '/users/refuse_friendship').to route_to('users#refuse_friendship')
     end
   end
 end
