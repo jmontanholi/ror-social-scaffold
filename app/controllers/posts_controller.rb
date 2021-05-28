@@ -19,8 +19,18 @@ class PostsController < ApplicationController
 
   private
 
+  def friends_posts
+   
+  end
+
   def timeline_posts
-    @timeline_posts ||= Post.all.ordered_by_most_recent.includes(:user)
+    @friendships_friends = current_user.friendships.where(status:"Accepted").map { | friendship | User.find(friendship.friend_id) }
+    @inverse_friendships_friends = current_user.inverse_friendships.where(status:"Accepted").map { | friendship | User.find(friendship.user_id) }
+    @friends = @friendships_friends + @inverse_friendships_friends
+    @friends_posts = @friends.map { | friend | friend.posts.all }
+    @user_posts = [current_user.posts.all]
+    @posts_to_show = @friends_posts + @user_posts
+    @timeline_posts = @posts_to_show
   end
 
   def post_params
