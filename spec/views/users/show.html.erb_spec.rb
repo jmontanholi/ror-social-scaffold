@@ -11,7 +11,7 @@ RSpec.describe 'Stay in touch', type: :system do
   feature 'Friendship' do
     scenario 'Check for add friend request' do
       sleep(2)
-      jenn_and_ariel
+      jenn_and_ariel(user1, user2)
       sleep(2)
       first('.profile-link').click_link
       expect(page).to have_content 'Jenn Accept Refuse'
@@ -19,7 +19,7 @@ RSpec.describe 'Stay in touch', type: :system do
 
     scenario 'Accept friendship' do
       sleep(2)
-      jenn_and_ariel
+      jenn_and_ariel(user1, user2)
       sleep(2)
       first('.profile-link').click_link
       click_link 'Accept'
@@ -28,7 +28,7 @@ RSpec.describe 'Stay in touch', type: :system do
 
     scenario 'Refuse friendship' do
       sleep(2)
-      jenn_and_ariel
+      jenn_and_ariel(user1, user2)
       sleep(2)
       first('.profile-link').click_link
       click_link 'Refuse'

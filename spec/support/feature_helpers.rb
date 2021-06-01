@@ -24,7 +24,7 @@ module FeatureHelpers
     click_button 'Comment'
   end
 
-  def jenn_and_ariel
+  def jenn_and_ariel(user1, user2)
     log_in(user2)
     visit '/users'
     click_link 'Add Friend'

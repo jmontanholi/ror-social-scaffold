@@ -10,8 +10,7 @@
     Recent posts
   </h3>
   <ul class="posts">
-    <% @posts_to_show.each do | array | %>
-      <% array.all.each do | post | %>
+    <% @timeline_posts.each do | post | %>
         <li class="post">
           <div>
             <div class='post-attribution' >
@@ -35,7 +34,6 @@
             <% end %>
           </div>
         </li>
-      <% end %>
     <% end %>
   </ul>
 </article>
