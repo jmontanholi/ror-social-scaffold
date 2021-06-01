@@ -19,12 +19,8 @@ class PostsController < ApplicationController
 
   private
 
-  def friends_and_own_posts
-    Post.where(user: (current_user.friends.to_a << current_user))
-  end
-
   def timeline_posts
-    @timeline_posts = friends_and_own_posts
+    @timeline_posts = current_user.friends_and_own_posts
   end
 
   def post_params

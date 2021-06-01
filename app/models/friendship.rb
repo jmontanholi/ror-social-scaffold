@@ -8,4 +8,11 @@ class Friendship < ApplicationRecord
   belongs_to :user
   belongs_to :friend, class_name: 'User'
   validates_with FriendshipValidator
+
+  def confirm_friend
+    update_attributes(status: 'Accepted')
+    Friendship.create!(friend_id: user_id,
+                       user_id: friend_id,
+                       status: 'Accepted')
+  end
 end
