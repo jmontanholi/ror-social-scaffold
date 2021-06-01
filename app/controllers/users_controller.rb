@@ -23,6 +23,9 @@ class UsersController < ApplicationController
     @friendship = current_user.inverse_friendships.find(params[:id])
     @friendship.status = 'Accepted'
     @friendship.save
+    @friend = User.find(params[:user_id])
+    @new_friendship = current_user.friendships.new(status: 'Accepted', friend_id: @friend.id)
+    @new_friendship.save
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'Friend request accepted' }
     end

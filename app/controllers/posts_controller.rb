@@ -19,20 +19,22 @@ class PostsController < ApplicationController
 
   private
 
-  def friends_posts; end
+  def friends_and_own_posts
+    Post.where(user: (current_user.friends.to_a << current_user))
+  end
 
   def timeline_posts
-    @friendships_friends = current_user.friendships.where(status: 'Accepted').map do |friendship|
-      User.find(friendship.friend_id)
-    end
-    @inverse_friendships_friends = current_user.inverse_friendships.where(status: 'Accepted').map do |friendship|
-      User.find(friendship.user_id)
-    end
-    @friends = @friendships_friends + @inverse_friendships_friends
-    @friends_posts = @friends.map { |friend| friend.posts.all }
-    @user_posts = [current_user.posts.all]
-    @posts_to_show = @friends_posts + @user_posts
-    @timeline_posts = @posts_to_show
+    # @friendships_friends = current_user.friendships.where(status: 'Accepted').map do |friendship|
+    #   User.find(friendship.friend_id)
+    # end
+    # @inverse_friendships_friends = current_user.inverse_friendships.where(status: 'Accepted').map do |friendship|
+    #   User.find(friendship.user_id)
+    # end
+    # @friends = @friendships_friends + @inverse_friendships_friends
+    # @friends_posts = @friends.map { |friend| friend.posts.all }
+    # @user_posts = [current_user.posts.all]
+    # @posts_to_show = @friends_posts + @user_posts
+    @timeline_posts = friends_and_own_posts
   end
 
   def post_params

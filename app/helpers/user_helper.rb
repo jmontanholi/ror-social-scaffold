@@ -16,8 +16,12 @@ module UserHelper
         html << '<br>'
         html << "<p class='friend-request'>Friendship requests from:</p>"
         html << User.find(inverse.user_id).name
-        html << link_to(' Accept', accept_friendship_path(id: inverse.id), method: :post, class: 'friendship-btn')
-        html << link_to(' Refuse', refuse_friendship_path(id: inverse.id), method: :post, class: 'friendship-btn')
+        html << link_to(' Accept', accept_friendship_path(id: inverse.id,
+                                                          user_id: inverse.user_id), method: :post,
+                                                                                     class: 'friendship-btn')
+        html << link_to(' Refuse', refuse_friendship_path(id: inverse.id,
+                                                          user_id: inverse.user_id), method: :post,
+                                                                                     class: 'friendship-btn')
       end
     end
     html.html_safe
