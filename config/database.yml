@@ -63,7 +63,7 @@ development:
 test:
   <<: *default
   adapter: postgresql
-  database: test
+  database: test_jmontanholi_ror
   username: <%= ENV['MY_NAME'] %>
   password: <%= ENV['MY_PASSWORD'] %>
   host: localhost
