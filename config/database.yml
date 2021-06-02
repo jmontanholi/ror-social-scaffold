@@ -22,9 +22,14 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
-  <<: *default
-  database: ror_social_scaffold_development
-
+  adapter: postgresql
+  database: development
+  username: <%= ENV['MY_NAME'] %>
+  password: <%= ENV['MY_PASSWORD'] %>
+  host: localhost
+  encoding: UTF8
+  pool: 5
+  timeout: 5000
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
@@ -57,7 +62,15 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: ror_social_scaffold_test
+  adapter: postgresql
+  database: test_jmontanholi_ror
+  username: <%= ENV['MY_NAME'] %>
+  password: <%= ENV['MY_PASSWORD'] %>
+  host: localhost
+  encoding: UTF8
+  pool: 5
+  timeout: 5000
+
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
