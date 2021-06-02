@@ -22,6 +22,14 @@
 
 To get a local copy up and running follow these simple example steps.
 
+- Log in GitHub
+
+- Open your commandline (on your code editor or the system commandline)
+
+- Type this command `git clone https://github.com/jmontanholi/ror-social-scaffold.git`
+
+- Follow the setup below
+
 ### Prerequisites
 
 Ruby: 2.6.3
